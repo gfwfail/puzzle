@@ -1,0 +1,53 @@
+
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#item {
+			background: red;
+			height:100px;
+			width: 100px;
+			position: absolute;
+            cursor:move;
+		}
+
+		#area {
+			width:800px;
+			height:800px;
+			border:solid 1px #333;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="area">
+		<div id="item"></div>
+	</div>
+	<script type="text/javascript">
+		const item = document.querySelector("#item")
+				const area = document.querySelector("#area")
+
+		let move = false;
+		item.addEventListener('mousedown',(e)=>{
+			move = true
+		})
+		document.body.addEventListener('mousemove',(e)=>{
+			if(!move)
+				return
+			let x= (e.clientX-item.clientWidth/2) 
+		let y= (e.clientY-item.clientHeight/2)
+		x=Math.max(0,x)
+		y=Math.max(0,y)
+		x=Math.min(700,x)
+		y=Math.min(700,y)
+item.style.left =x+"px";
+      item.style.top = y+"px";
+			console.log(e)
+		})
+		document.body.addEventListener('mouseup',(e)=>{
+			move = false
+		})
+
+	</script>
+</body>
+</html>
